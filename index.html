@@ -29,19 +29,23 @@
 
 <body>
 
+  <!-- MUSIC -->
   <audio
     id="song"
     src="assets/tenu-sang-yara.mp3"
     loop
-    preload="auto"
-  ></audio>
+    preload="auto">
+  </audio>
 
+  <!-- BACKGROUND -->
   <div class="grain"></div>
   <div id="particles"></div>
 
   <main>
 
-    <!-- INTRO -->
+    <!-- =========================
+         INTRO
+    ========================== -->
 
     <section class="scene active" id="intro">
 
@@ -67,7 +71,9 @@
           They are simply felt. ❤️
         </p>
 
-        <button class="cta" id="enterBtn">
+        <button
+          class="cta"
+          id="enterBtn">
           Enter our story <b>→</b>
         </button>
 
@@ -76,7 +82,9 @@
     </section>
 
 
-    <!-- MEMORIES -->
+    <!-- =========================
+         MEMORIES
+    ========================== -->
 
     <section class="scene" id="memories">
 
@@ -100,26 +108,25 @@
         </div>
 
 
+        <!-- PHOTO CARD -->
+
         <div class="photo-stage">
 
           <div class="photo-glow"></div>
 
           <div
             class="photo-card"
-            id="photoCard"
-          >
+            id="photoCard">
 
             <img
               id="memoryImage"
               src="assets/photos/memory-1.png"
               alt="Memory with Akka"
-              draggable="false"
-            >
+              draggable="false">
 
             <div
               class="photo-caption"
-              id="caption"
-            >
+              id="caption">
               The little us. The beginning of everything. ❤️
             </div>
 
@@ -127,13 +134,14 @@
 
           <div
             class="photo-number"
-            id="photoNumber"
-          >
+            id="photoNumber">
             01 / 09
           </div>
 
         </div>
 
+
+        <!-- SWIPE GUIDE -->
 
         <div class="swipe-hint">
 
@@ -148,10 +156,11 @@
         </div>
 
 
+        <!-- CONTINUE -->
+
         <button
           class="cta ghost"
-          id="continueBtn"
-        >
+          id="continueBtn">
           Continue <b>→</b>
         </button>
 
@@ -160,7 +169,9 @@
     </section>
 
 
-    <!-- LETTER -->
+    <!-- =========================
+         LETTER
+    ========================== -->
 
     <section class="scene" id="letter">
 
@@ -215,8 +226,7 @@
 
         <button
           class="cta"
-          id="revealBtn"
-        >
+          id="revealBtn">
           One last thing <b>→</b>
         </button>
 
@@ -225,12 +235,13 @@
     </section>
 
 
-    <!-- FINALE -->
+    <!-- =========================
+         FINALE
+    ========================== -->
 
     <section
       class="scene finale"
-      id="finale"
-    >
+      id="finale">
 
       <div class="final-bloom"></div>
 
@@ -265,8 +276,7 @@
 
       <button
         class="music-toggle"
-        id="musicBtn"
-      >
+        id="musicBtn">
         ♫ <span>Music on</span>
       </button>
 
@@ -275,13 +285,16 @@
   </main>
 
 
+  <!-- MUSIC PILL -->
+
   <div
     class="music-pill"
-    id="musicPill"
-  >
+    id="musicPill">
     ♫ Tenu Sang Yara
   </div>
 
+
+  <!-- JAVASCRIPT -->
 
   <script src="script.js"></script>
 
