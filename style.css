@@ -1,215 +1,325 @@
-/* =====================================================
-   RAKHI SURPRISE
-   PREMIUM MOBILE-FIRST DESIGN
-===================================================== */
-
 :root {
+
   --bg: #080507;
   --cream: #f4e9df;
   --gold: #d7b56d;
   --pink: #eaa4ba;
   --muted: #b8a9a1;
-  --white: #fff;
+  --white: #ffffff;
+
 }
 
 
-/* =====================================================
+/* =========================
    RESET
-===================================================== */
+========================= */
 
 * {
+
   box-sizing: border-box;
+
   margin: 0;
+
   padding: 0;
+
 }
+
 
 html,
 body {
+
   width: 100%;
   height: 100%;
+
 }
+
 
 body {
+
   background: var(--bg);
+
   color: var(--cream);
+
   font-family: "Montserrat", sans-serif;
+
   overflow: hidden;
+
 }
 
 
-/* =====================================================
+/* =========================
    GRAIN
-===================================================== */
+========================= */
 
 .grain {
+
   position: fixed;
+
   inset: 0;
+
   z-index: 50;
+
   pointer-events: none;
-  opacity: .055;
+
+  opacity: .05;
 
   background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+
 }
 
 
-/* =====================================================
+/* =========================
    PARTICLES
-===================================================== */
+========================= */
 
 #particles {
+
   position: fixed;
+
   inset: 0;
+
   pointer-events: none;
+
   overflow: hidden;
+
   z-index: 2;
+
 }
 
+
 .p {
+
   position: absolute;
+
   bottom: -10px;
+
   border-radius: 50%;
+
   background: var(--gold);
+
   opacity: .35;
+
   animation: floatParticle linear infinite;
+
 }
+
 
 @keyframes floatParticle {
 
   from {
+
     transform: translateY(0);
+
   }
 
   to {
+
     transform: translateY(-110vh);
+
   }
 
 }
 
 
-/* =====================================================
+/* =========================
    SCENES
-===================================================== */
+========================= */
 
 main {
+
   width: 100%;
+
   height: 100%;
+
 }
 
+
 .scene {
+
   position: absolute;
+
   inset: 0;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   opacity: 0;
+
   visibility: hidden;
 
   transform: scale(1.03);
 
   transition:
-    opacity .8s ease,
-    transform .8s ease,
-    visibility .8s;
+
+    opacity .7s ease,
+
+    transform .7s ease,
+
+    visibility .7s;
 
   overflow-y: auto;
+
 }
+
 
 .scene.active {
+
   opacity: 1;
+
   visibility: visible;
+
   transform: scale(1);
+
 }
 
 
-/* =====================================================
+/* =========================
    INTRO
-===================================================== */
+========================= */
 
 #intro {
+
   text-align: center;
+
   padding: 30px;
+
 }
+
 
 .intro-wrap {
+
   position: relative;
+
   z-index: 5;
+
   max-width: 750px;
+
 }
+
 
 .eyebrow {
+
   font-size: 10px;
+
   letter-spacing: 5px;
+
   color: var(--gold);
+
   text-transform: uppercase;
+
 }
 
+
 .intro-wrap h1 {
+
   margin-top: 22px;
 
   font-family: "Cormorant Garamond", serif;
+
   font-size: clamp(70px, 10vw, 130px);
+
   font-weight: 300;
+
   line-height: .85;
+
 }
+
 
 .intro-wrap h1 span {
+
   color: var(--gold);
+
 }
+
 
 .ornament {
+
   margin: 25px 0;
+
   color: var(--gold);
+
   font-size: 22px;
+
 }
+
 
 .intro-copy {
+
   color: var(--muted);
+
   font-family: "Cormorant Garamond", serif;
+
   font-size: 20px;
+
   line-height: 1.5;
+
 }
 
 
-/* =====================================================
+/* =========================
    ORBS
-===================================================== */
+========================= */
 
 .orb {
+
   position: absolute;
+
   border-radius: 50%;
+
   filter: blur(90px);
+
   opacity: .18;
+
 }
+
 
 .orb-a {
+
   width: 400px;
+
   height: 400px;
+
   background: var(--pink);
+
   top: -180px;
+
   left: -150px;
+
 }
+
 
 .orb-b {
+
   width: 350px;
+
   height: 350px;
+
   background: var(--gold);
+
   bottom: -170px;
+
   right: -120px;
+
 }
 
 
-/* =====================================================
+/* =========================
    BUTTONS
-===================================================== */
+========================= */
 
 .cta {
+
   margin-top: 35px;
 
   border: 1px solid #d7b56d66;
+
   background: #d7b56d0e;
+
   color: var(--cream);
 
   padding: 15px 25px;
@@ -217,54 +327,80 @@ main {
   border-radius: 100px;
 
   font-family: "Montserrat", sans-serif;
+
   font-size: 11px;
+
   letter-spacing: 2px;
+
   text-transform: uppercase;
 
   cursor: pointer;
 
   transition:
+
     transform .3s ease,
+
     background .3s ease,
+
     border-color .3s ease;
+
 }
+
 
 .cta:hover {
+
   transform: translateY(-3px);
+
   background: #d7b56d1d;
+
   border-color: var(--gold);
+
 }
+
 
 .cta b {
+
   margin-left: 10px;
+
   color: var(--gold);
+
 }
+
 
 .ghost {
+
   background: transparent;
+
 }
 
 
-/* =====================================================
-   MEMORY SECTION
-===================================================== */
+/* =========================
+   MEMORY
+========================= */
 
 .memory-shell {
+
   width: min(1100px, 94vw);
 
   display: grid;
 
   grid-template-columns:
+
     minmax(200px, .8fr)
+
     minmax(300px, 1fr)
+
     minmax(120px, .3fr);
 
-  gap: 40px;
+  gap: 35px;
 
   align-items: center;
+
 }
 
+
 .memory-heading h2 {
+
   margin-top: 18px;
 
   font-family: "Cormorant Garamond", serif;
@@ -274,14 +410,21 @@ main {
   font-weight: 300;
 
   line-height: .9;
+
 }
+
 
 .memory-heading h2 em {
+
   color: var(--gold);
+
   font-style: normal;
+
 }
 
+
 .sub {
+
   margin-top: 20px;
 
   max-width: 250px;
@@ -292,29 +435,34 @@ main {
 
   line-height: 1.7;
 
-  letter-spacing: .5px;
 }
 
 
-/* =====================================================
+/* =========================
    PHOTO STAGE
-===================================================== */
+========================= */
 
 .photo-stage {
+
   position: relative;
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   padding: 20px;
+
 }
 
+
 .photo-glow {
+
   position: absolute;
 
   width: 75%;
+
   height: 75%;
 
   background: #eaa4ba22;
@@ -322,14 +470,16 @@ main {
   filter: blur(80px);
 
   border-radius: 50%;
+
 }
 
 
-/* =====================================================
+/* =========================
    SWIPE CARD
-===================================================== */
+========================= */
 
 .photo-card {
+
   position: relative;
 
   width: min(430px, 78vw);
@@ -338,8 +488,7 @@ main {
 
   background: var(--cream);
 
-  box-shadow:
-    0 30px 90px #000b;
+  box-shadow: 0 30px 90px #000b;
 
   transform: rotate(2deg);
 
@@ -354,16 +503,25 @@ main {
   will-change: transform, opacity;
 
   transition:
-    transform .5s cubic-bezier(.2,.8,.2,1),
+
+    transform .45s cubic-bezier(.2,.8,.2,1),
+
     opacity .45s ease;
+
 }
+
 
 .photo-card:active {
+
   cursor: grabbing;
+
 }
 
+
 .photo-card img {
+
   width: 100%;
+
   height: auto;
 
   max-height: 62vh;
@@ -375,15 +533,15 @@ main {
   background: var(--cream);
 
   pointer-events: none;
+
 }
 
 
-/* =====================================================
+/* =========================
    CAPTION
-===================================================== */
+========================= */
 
 .photo-caption {
-  position: static;
 
   padding: 14px 12px;
 
@@ -398,17 +556,20 @@ main {
   font-size: 16px;
 
   line-height: 1.35;
+
 }
 
 
-/* =====================================================
-   PHOTO NUMBER
-===================================================== */
+/* =========================
+   NUMBER
+========================= */
 
 .photo-number {
+
   position: absolute;
 
   right: 0;
+
   bottom: -15px;
 
   color: #ffffff14;
@@ -418,12 +579,13 @@ main {
   font-size: 90px;
 
   pointer-events: none;
+
 }
 
 
-/* =====================================================
+/* =========================
    SWIPE HINT
-===================================================== */
+========================= */
 
 .swipe-hint {
 
@@ -433,7 +595,7 @@ main {
 
   justify-content: center;
 
-  gap: 16px;
+  gap: 15px;
 
   grid-column: 2;
 
@@ -447,88 +609,120 @@ main {
 
   text-transform: uppercase;
 
-  opacity: .75;
 }
 
+
 .swipe-hint p {
+
   margin: 0;
+
 }
+
 
 .swipe-hint span {
 
-  font-size: 20px;
-
   color: var(--gold);
 
-  animation:
-    swipePulse 1.8s ease-in-out infinite;
+  font-size: 20px;
+
+  animation: swipePulse 1.7s ease-in-out infinite;
+
 }
 
+
 .swipe-hint span:last-child {
-  animation-delay: .3s;
+
+  animation-delay: .25s;
+
 }
+
 
 @keyframes swipePulse {
 
   0%,
   100% {
+
     transform: translateX(0);
-    opacity: .45;
+
+    opacity: .4;
+
   }
 
   50% {
+
     transform: translateX(6px);
+
     opacity: 1;
+
   }
 
 }
 
 
-/* =====================================================
+/* =========================
    LETTER
-===================================================== */
+========================= */
 
 .letter-wrap {
+
   width: min(750px, 92vw);
 
   text-align: center;
+
 }
 
+
 .letter-card {
+
   margin-top: 25px;
 
   padding: 50px 55px;
 
   background:
+
     linear-gradient(
+
       145deg,
+
       #f4e9df0b,
+
       #ffffff04
+
     );
 
   border: 1px solid #d7b56d22;
 
-  box-shadow:
-    0 30px 100px #0008;
+  box-shadow: 0 30px 100px #0008;
 
   backdrop-filter: blur(20px);
+
 }
+
 
 .seal {
+
   color: var(--gold);
+
   font-size: 25px;
+
   margin-bottom: 20px;
+
 }
 
+
 .letter-kicker {
+
   font-family: "Great Vibes", cursive;
 
   color: var(--gold);
 
   font-size: 40px;
+
 }
 
+
 .letter-text {
+
   margin-top: 18px;
 
   color: #d5c8c1;
@@ -538,13 +732,19 @@ main {
   font-size: 20px;
 
   line-height: 1.55;
+
 }
+
 
 .letter-text strong {
+
   color: var(--cream);
+
 }
 
+
 .signature {
+
   margin-top: 30px;
 
   font-family: "Cormorant Garamond", serif;
@@ -552,22 +752,27 @@ main {
   color: var(--muted);
 
   font-size: 17px;
+
 }
 
+
 .signature span {
+
   color: var(--gold);
 
   font-family: "Great Vibes", cursive;
 
   font-size: 36px;
+
 }
 
 
-/* =====================================================
+/* =========================
    FINALE
-===================================================== */
+========================= */
 
 .finale {
+
   flex-direction: column;
 
   text-align: center;
@@ -575,12 +780,16 @@ main {
   padding: 30px;
 
   overflow: hidden;
+
 }
 
+
 .final-bloom {
+
   position: absolute;
 
   width: 600px;
+
   height: 600px;
 
   background: #eaa4ba18;
@@ -588,26 +797,35 @@ main {
   filter: blur(100px);
 
   border-radius: 50%;
+
 }
 
+
 .rakhi-art {
+
   position: relative;
 
   width: 160px;
+
   height: 80px;
 
   margin-bottom: 25px;
+
 }
 
+
 .rakhi-gem {
+
   position: absolute;
 
   left: 50%;
+
   top: 50%;
 
   transform: translate(-50%, -50%);
 
   width: 70px;
+
   height: 70px;
 
   border: 1px solid var(--gold);
@@ -615,36 +833,49 @@ main {
   border-radius: 50%;
 
   display: grid;
+
   place-items: center;
 
   color: var(--gold);
 
   font-size: 30px;
 
-  box-shadow:
-    0 0 50px #d7b56d33;
+  box-shadow: 0 0 50px #d7b56d33;
+
 }
 
+
 .thread {
+
   position: absolute;
 
   top: 50%;
 
   width: 55px;
+
   height: 1px;
 
   background: var(--gold);
+
 }
+
 
 .thread.left {
+
   left: 0;
+
 }
+
 
 .thread.right {
+
   right: 0;
+
 }
 
+
 .finale h2 {
+
   position: relative;
 
   font-family: "Cormorant Garamond", serif;
@@ -654,13 +885,19 @@ main {
   line-height: .85;
 
   font-weight: 300;
+
 }
+
 
 .finale h2 span {
+
   color: var(--gold);
+
 }
 
+
 .akka-script {
+
   position: relative;
 
   margin: 25px 0 15px;
@@ -676,10 +913,14 @@ main {
   letter-spacing: 2px;
 
   text-shadow:
+
     0 0 25px rgba(215, 181, 109, .35);
+
 }
 
+
 .final-line {
+
   position: relative;
 
   color: var(--muted);
@@ -689,18 +930,20 @@ main {
   font-size: 18px;
 
   line-height: 1.5;
+
 }
 
 
-/* =====================================================
+/* =========================
    MUSIC
-===================================================== */
+========================= */
 
 .music-pill {
 
   position: fixed;
 
   top: 20px;
+
   right: 20px;
 
   padding: 9px 13px;
@@ -726,12 +969,18 @@ main {
   transition: .4s;
 
   z-index: 60;
+
 }
 
+
 .music-pill.show {
+
   opacity: 1;
+
   transform: translateY(0);
+
 }
+
 
 .music-toggle {
 
@@ -754,47 +1003,57 @@ main {
   font-family: "Montserrat", sans-serif;
 
   font-size: 10px;
+
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media (max-width: 800px) {
 
   html,
   body {
+
     overflow: hidden;
+
   }
 
+
   .scene {
-    padding: 22px 16px;
+
+    padding: 20px 15px;
 
     align-items: flex-start;
 
     overflow-y: auto;
 
     -webkit-overflow-scrolling: touch;
+
   }
 
-
-  /* INTRO */
 
   #intro {
+
     align-items: center;
+
   }
+
 
   .intro-wrap h1 {
+
     font-size: 72px;
+
   }
+
 
   .intro-copy {
+
     font-size: 17px;
+
   }
 
-
-  /* MEMORY */
 
   .memory-shell {
 
@@ -804,50 +1063,61 @@ main {
 
     flex-direction: column;
 
-    gap: 8px;
+    gap: 7px;
 
     text-align: center;
 
-    padding: 45px 0 25px;
+    padding: 40px 0 20px;
+
   }
 
+
   .memory-heading {
+
     width: 100%;
+
   }
+
 
   .memory-heading h2 {
 
-    font-size: 47px;
+    font-size: 45px;
 
     line-height: .88;
 
-    margin: 18px 0 12px;
+    margin: 16px 0 10px;
+
   }
+
 
   .memory-heading .eyebrow {
+
     font-size: 8px;
+
     letter-spacing: 3px;
+
   }
 
+
   .sub {
+
     margin: 0 auto;
 
     max-width: 280px;
 
     font-size: 10px;
+
   }
 
-
-  /* PHOTO */
 
   .photo-stage {
 
     width: 100%;
 
-    padding: 8px 0 0;
+    padding: 7px 0 0;
 
-    min-height: 0;
   }
+
 
   .photo-card {
 
@@ -855,8 +1125,10 @@ main {
 
     padding: 8px 8px 0;
 
-    transform: rotate(1.2deg);
+    transform: rotate(1deg);
+
   }
+
 
   .photo-card img {
 
@@ -867,28 +1139,29 @@ main {
     max-height: none;
 
     object-fit: contain;
+
   }
+
 
   .photo-caption {
 
     font-size: 17px;
 
-    line-height: 1.25;
-
     padding: 13px 12px;
+
   }
+
 
   .photo-number {
 
-    right: 3%;
+    right: 2%;
 
     bottom: 0;
 
     font-size: 65px;
+
   }
 
-
-  /* SWIPE */
 
   .swipe-hint {
 
@@ -899,14 +1172,16 @@ main {
     gap: 12px;
 
     font-size: 9px;
+
   }
+
 
   .swipe-hint span {
+
     font-size: 18px;
+
   }
 
-
-  /* BUTTON */
 
   .cta {
 
@@ -915,32 +1190,34 @@ main {
     padding: 14px 24px;
 
     font-size: 10px;
+
   }
 
-
-  /* LETTER */
 
   .letter-wrap {
 
     width: 100%;
 
-    padding: 45px 0 25px;
+    padding: 40px 0 20px;
+
   }
+
 
   .letter-card {
 
     padding: 32px 20px;
+
   }
+
 
   .letter-text {
 
     font-size: 18px;
 
-    line-height: 1.55;
+    line-height: 1.5;
+
   }
 
-
-  /* FINALE */
 
   .finale {
 
@@ -949,57 +1226,84 @@ main {
     justify-content: center;
 
     overflow: hidden;
+
   }
+
 
   .finale h2 {
+
     font-size: 60px;
+
   }
+
 
   .akka-script {
+
     font-size: 70px;
+
   }
 
+
   .final-line {
+
     font-size: 17px;
+
   }
+
 
   .music-pill {
 
     top: 9px;
+
     right: 9px;
 
     font-size: 8px;
 
     padding: 8px 10px;
+
   }
 
 }
 
 
-/* =====================================================
+/* =========================
    SMALL PHONES
-===================================================== */
+========================= */
 
 @media (max-width: 400px) {
 
   .intro-wrap h1 {
+
     font-size: 62px;
+
   }
+
 
   .memory-heading h2 {
-    font-size: 41px;
+
+    font-size: 40px;
+
   }
+
 
   .photo-card {
+
     width: 90vw;
+
   }
+
 
   .letter-card {
+
     padding: 28px 17px;
+
   }
 
+
   .akka-script {
+
     font-size: 62px;
+
   }
 
 }
