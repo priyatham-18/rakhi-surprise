@@ -1,11 +1,22 @@
 const song = document.getElementById("song");
 const musicPill = document.getElementById("musicPill");
-const scenes = [...document.querySelectorAll(".scene")];
+
+const scenes = [
+  ...document.querySelectorAll(".scene")
+];
+
 
 function show(id) {
-  scenes.forEach(s => {
-    s.classList.toggle("active", s.id === id);
+
+  scenes.forEach(scene => {
+
+    scene.classList.toggle(
+      "active",
+      scene.id === id
+    );
+
   });
+
 }
 
 
@@ -33,11 +44,12 @@ function startMusic() {
 
 
 /* =========================
-   ENTER
+   ENTER STORY
 ========================= */
 
 const enterBtn =
   document.getElementById("enterBtn");
+
 
 if (enterBtn) {
 
@@ -181,7 +193,9 @@ function loadPhoto(i) {
     new Image();
 
   next.src =
-    photos[(index + 1) % photos.length].src;
+    photos[
+      (index + 1) % photos.length
+    ].src;
 
 
   /* PRELOAD PREVIOUS */
@@ -227,7 +241,8 @@ function swipe(direction) {
 
       show("letter");
 
-      card.style.transition = "none";
+      card.style.transition =
+        "none";
 
       card.style.transform =
         "translateX(0) rotate(1deg)";
@@ -242,7 +257,7 @@ function swipe(direction) {
   }
 
 
-  /* FIRST PHOTO + RIGHT SWIPE */
+  /* FIRST PHOTO */
 
   if (
     direction === "right" &&
@@ -285,7 +300,6 @@ function swipe(direction) {
 
   setTimeout(() => {
 
-
     if (direction === "left") {
 
       index++;
@@ -315,7 +329,6 @@ function swipe(direction) {
 
     requestAnimationFrame(() => {
 
-
       requestAnimationFrame(() => {
 
         card.style.transition =
@@ -339,11 +352,10 @@ function swipe(direction) {
 
 
 /* =========================
-   TOUCH SWIPE
+   PHONE SWIPE
 ========================= */
 
 if (card) {
-
 
   card.addEventListener(
     "touchstart",
@@ -404,7 +416,6 @@ if (card) {
 
       if (Math.abs(movement) > 80) {
 
-
         if (movement < 0) {
 
           swipe("left");
@@ -415,13 +426,10 @@ if (card) {
 
         }
 
-
       } else {
-
 
         card.style.transition =
           "transform .35s cubic-bezier(.2,.8,.2,1)";
-
 
         card.style.transform =
           "translateX(0) rotate(1deg)";
@@ -435,11 +443,10 @@ if (card) {
 
 
 /* =========================
-   DESKTOP MOUSE DRAG
+   DESKTOP DRAG
 ========================= */
 
 if (card) {
-
 
   card.addEventListener(
     "mousedown",
@@ -498,7 +505,6 @@ if (card) {
 
       if (Math.abs(movement) > 100) {
 
-
         if (movement < 0) {
 
           swipe("left");
@@ -509,13 +515,10 @@ if (card) {
 
         }
 
-
       } else {
-
 
         card.style.transition =
           "transform .35s cubic-bezier(.2,.8,.2,1)";
-
 
         card.style.transform =
           "translateX(0) rotate(1deg)";
@@ -542,7 +545,6 @@ document.addEventListener(
 
     }
 
-
     if (e.key === "ArrowLeft") {
 
       swipe("right");
@@ -560,6 +562,7 @@ document.addEventListener(
 const continueBtn =
   document.getElementById("continueBtn");
 
+
 if (continueBtn) {
 
   continueBtn.onclick =
@@ -574,6 +577,7 @@ if (continueBtn) {
 
 const revealBtn =
   document.getElementById("revealBtn");
+
 
 if (revealBtn) {
 
@@ -596,6 +600,7 @@ if (revealBtn) {
 const musicBtn =
   document.getElementById("musicBtn");
 
+
 if (musicBtn) {
 
   musicBtn.onclick =
@@ -611,9 +616,7 @@ if (musicBtn) {
         musicBtn.innerHTML =
           "♫ <span>Music on</span>";
 
-      }
-
-      else {
+      } else {
 
         song.pause();
 
@@ -714,6 +717,7 @@ function burst() {
 
 const pc =
   document.getElementById("particles");
+
 
 if (pc) {
 
