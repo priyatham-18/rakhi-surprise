@@ -20,7 +20,13 @@ document.getElementById("enterBtn").onclick=()=>{
 
 const photos=[
   {src:"assets/photos/memory-1.png",caption:"The little us. The beginning of everything. ❤️"},
+  {src:"assets/photos/memory-4.png",caption:"Growing up together, one memory at a time. 🫂❤️"},
+  {src:"assets/photos/memory-5.png",caption:"Some memories never get old. ✨"},
   {src:"assets/photos/memory-2.png",caption:"The chaos, the laughter, and the memories nobody else understands. 😂❤️"},
+  {src:"assets/photos/memory-6.png",caption:"Even the silly moments became my favourite memories. 💕"},
+  {src:"assets/photos/memory-7.png",caption:"Just us being us. No explanation needed. ❤️"},
+  {src:"assets/photos/memory-8.png",caption:"Always there for each other, through every little thing. 🫂"},
+  {src:"assets/photos/memory-9.png",caption:"And somehow, every picture tells a story of us. 💖"},
   {src:"assets/photos/memory-3.png",caption:"Growing up changed a lot of things. Our bond wasn't one of them. 🫂"}
 ];
 
