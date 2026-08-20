@@ -3,97 +3,301 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>For Akka ❤️</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <audio id="song" src="assets/tenu-sang-yara.mp3" loop preload="auto"></audio>
 
+<body>
+
+  <!-- MUSIC -->
+  <audio
+    id="song"
+    src="assets/tenu-sang-yara.mp3"
+    loop
+    preload="auto">
+  </audio>
+
+  <!-- BACKGROUND EFFECTS -->
   <div class="grain"></div>
   <div id="particles"></div>
 
   <main>
+
+    <!-- =========================================
+         INTRO
+    ========================================== -->
+
     <section class="scene active" id="intro">
-      <div class="orb orb-a"></div><div class="orb orb-b"></div>
+
+      <div class="orb orb-a"></div>
+      <div class="orb orb-b"></div>
+
       <div class="intro-wrap">
-        <p class="eyebrow">A PRIVATE LITTLE STORY</p>
-        <h1>For My <span>Akka</span></h1>
-        <div class="ornament">✦</div>
-        <p class="intro-copy">Some bonds are not explained.<br>They are simply felt. ❤️</p>
-        <button class="cta" id="enterBtn">Enter our story <b>→</b></button>
+
+        <p class="eyebrow">
+          A PRIVATE LITTLE STORY
+        </p>
+
+        <h1>
+          For My <span>Akka</span>
+        </h1>
+
+        <div class="ornament">
+          ✦
+        </div>
+
+        <p class="intro-copy">
+          Some bonds are not explained.<br>
+          They are simply felt. ❤️
+        </p>
+
+        <button class="cta" id="enterBtn">
+          Enter our story <b>→</b>
+        </button>
+
       </div>
+
     </section>
+
+
+    <!-- =========================================
+         MEMORIES
+    ========================================== -->
 
     <section class="scene" id="memories">
+
       <div class="memory-shell">
+
         <div class="memory-heading">
-          <p class="eyebrow">MEMORY VAULT · 01 — 03</p>
-          <h2>A few moments<br><em>I'll always keep.</em></h2>
-          <p class="sub">Turn the pages. The music is part of the memory.</p>
+
+          <p class="eyebrow">
+            MEMORY VAULT · 09 MEMORIES
+          </p>
+
+          <h2>
+            A few moments<br>
+            <em>I'll always keep.</em>
+          </h2>
+
+          <p class="sub">
+            Swipe through our memories.
+          </p>
+
         </div>
+
+
+        <!-- PHOTO CARD -->
 
         <div class="photo-stage">
+
           <div class="photo-glow"></div>
-          <div class="photo-card" id="photoCard">
-            <img id="memoryImage" src="assets/photos/memory-1.png" alt="Memory with Akka">
-            <div class="photo-caption" id="caption">The little us. The beginning of everything. ❤️</div>
+
+          <div
+            class="photo-card"
+            id="photoCard"
+          >
+
+            <img
+              id="memoryImage"
+              src="assets/photos/memory-1.png"
+              alt="Memory with Akka"
+              draggable="false"
+            >
+
+            <div
+              class="photo-caption"
+              id="caption"
+            >
+              The little us. The beginning of everything. ❤️
+            </div>
+
           </div>
-          <div class="photo-number" id="photoNumber">01</div>
+
+          <div
+            class="photo-number"
+            id="photoNumber"
+          >
+            01 / 09
+          </div>
+
         </div>
 
-        <div class="controls">
-          <button class="round-btn" id="prevBtn">←</button>
-          <div class="dots" id="dots"></div>
-          <button class="round-btn" id="nextBtn">→</button>
+
+        <!-- SWIPE INDICATOR -->
+
+        <div class="swipe-hint">
+
+          <span>←</span>
+
+          <p>
+            Swipe to explore
+          </p>
+
+          <span>→</span>
+
         </div>
 
-        <button class="cta ghost" id="continueBtn">Continue <b>→</b></button>
+
+        <!-- CONTINUE BUTTON -->
+
+        <button
+          class="cta ghost"
+          id="continueBtn"
+        >
+          Continue <b>→</b>
+        </button>
+
       </div>
+
     </section>
 
-    <section class="scene" id="letter">
+
+    <!-- =========================================
+         LETTER
+    ========================================== -->
+
+    <section
+      class="scene"
+      id="letter"
+    >
+
       <div class="letter-wrap">
-        <p class="eyebrow">A MESSAGE I COULDN'T JUST TEXT</p>
+
+        <p class="eyebrow">
+          A MESSAGE I COULDN'T JUST TEXT
+        </p>
+
         <div class="letter-card">
-          <div class="seal">♡</div>
-          <p class="letter-kicker">Dear Akka,</p>
-          <p class="letter-text">
-            I could have simply wished you Happy Raksha Bandhan...
-            but you deserve more than a message on a screen.
+
+          <div class="seal">
+            ♡
+          </div>
+
+          <p class="letter-kicker">
+            Dear Akka,
           </p>
+
           <p class="letter-text">
-            We've fought, annoyed each other, laughed at the stupidest
-            things, and made memories that I know I'll carry forever.
+            I could have simply wished you
+            Happy Raksha Bandhan...
+            but you deserve more than a message
+            on a screen.
           </p>
+
           <p class="letter-text">
-            No matter how much we fight or how much we annoy each other,
-            <strong>you'll always be my Akka.</strong>
+            We've fought, annoyed each other,
+            laughed at the stupidest things,
+            and made memories that I know
+            I'll carry forever.
           </p>
-          <p class="letter-text">I'll always be there for you. 🫂❤️</p>
-          <p class="signature">With love,<br><span>Your Thammudu</span></p>
+
+          <p class="letter-text">
+            No matter how much we fight or
+            how much we annoy each other,
+            <strong>
+              you'll always be my Akka.
+            </strong>
+          </p>
+
+          <p class="letter-text">
+            I'll always be there for you. 🫂❤️
+          </p>
+
+          <p class="signature">
+            With love,<br>
+            <span>Thammud</span>
+          </p>
+
         </div>
-        <button class="cta" id="revealBtn">One last thing <b>→</b></button>
+
+        <button
+          class="cta"
+          id="revealBtn"
+        >
+          One last thing <b>→</b>
+        </button>
+
       </div>
+
     </section>
 
-    <section class="scene finale" id="finale">
+
+    <!-- =========================================
+         FINAL REVEAL
+    ========================================== -->
+
+    <section
+      class="scene finale"
+      id="finale"
+    >
+
       <div class="final-bloom"></div>
+
       <div class="rakhi-art">
-        <div class="thread left"></div><div class="thread right"></div>
-        <div class="rakhi-gem">✦</div>
+
+        <div class="thread left"></div>
+
+        <div class="thread right"></div>
+
+        <div class="rakhi-gem">
+          ✦
+        </div>
+
       </div>
-      <p class="eyebrow">FOREVER & ALWAYS</p>
-      <h2>Happy Raksha<br><span>Bandhan</span></h2>
-      <div class="akka-script">Akka</div>
-      <div class="final-line">Some bonds are tied by a thread.<br>Ours is tied by a lifetime. ❤️</div>
-      <button class="music-toggle" id="musicBtn">♫ <span>Music on</span></button>
+
+      <p class="eyebrow">
+        FOREVER & ALWAYS
+      </p>
+
+      <h2>
+        Happy Raksha<br>
+        <span>Bandhan</span>
+      </h2>
+
+      <div class="akka-script">
+        Akka
+      </div>
+
+      <div class="final-line">
+        Some bonds are tied by a thread.<br>
+        Ours is tied by a lifetime. ❤️
+      </div>
+
+      <button
+        class="music-toggle"
+        id="musicBtn"
+      >
+        ♫ <span>Music on</span>
+      </button>
+
     </section>
+
   </main>
 
-  <div class="music-pill" id="musicPill">♫ Tenu Sang Yara</div>
-<script src="script.js"></script>
+
+  <!-- MUSIC INDICATOR -->
+
+  <div
+    class="music-pill"
+    id="musicPill"
+  >
+    ♫ Tenu Sang Yara
+  </div>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script src="script.js"></script>
+
 </body>
 </html>
