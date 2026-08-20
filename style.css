@@ -57,15 +57,7 @@ body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle 
 @keyframes pulse{50%{transform:scale(1.12)}}
 .finale h2{font:400 clamp(55px,9vw,105px)/.8 "Cormorant Garamond";margin-top:22px}
 .finale h2 span{color:var(--rose)}
-.akka-script {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 95px;
-    font-weight: 600;
-    color: var(--gold);
-    margin: 22px 0 12px;
-    letter-spacing: 2px;
-    text-shadow: 0 0 25px rgba(215, 181, 109, 0.35);
-}
+.akka-script{font:400 80px "Great Vibes";color:var(--gold);margin:22px 0 12px}
 .final-line{font:400 19px/1.7 "Cormorant Garamond";color:#c7babf}
 .music-toggle{margin-top:25px;border:1px solid #ffffff22;background:#ffffff08;color:#fff;border-radius:999px;padding:11px 18px;cursor:pointer}
 .music-pill{position:fixed;top:20px;right:20px;z-index:30;padding:9px 13px;border:1px solid #ffffff15;background:#ffffff08;border-radius:999px;color:#a99da1;font-size:9px;letter-spacing:1.5px;opacity:0;transition:.5s}.music-pill.show{opacity:1}
