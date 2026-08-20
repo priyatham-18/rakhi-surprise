@@ -20,8 +20,16 @@ document.getElementById("enterBtn").onclick=()=>{
 
 const photos = [
   {
-    src: "assets/memory-1.png",
+    src: "assets/photos/memory-1.png",
     caption: "The little us. The beginning of everything. ❤️"
+  },
+  {
+    src: "assets/photos/memory-2.png",
+    caption: "The chaos, the laughter, and the memories nobody else understands. 😂❤️"
+  },
+  {
+    src: "assets/photos/memory-3.png",
+    caption: "Growing up changed a lot of things. Our bond wasn't one of them. 🫂"
   },
   {
     src: "assets/photos/memory-4.png",
@@ -30,10 +38,6 @@ const photos = [
   {
     src: "assets/photos/memory-5.png",
     caption: "Some memories never get old. ✨"
-  },
-  {
-    src: "assets/memory-2.png",
-    caption: "The chaos, the laughter, and the memories nobody else understands. 😂❤️"
   },
   {
     src: "assets/photos/memory-6.png",
@@ -50,7 +54,9 @@ const photos = [
   {
     src: "assets/photos/memory-9.png",
     caption: "And somehow, every picture tells a story of us. 💖"
-  },
+  }
+];
+
   {
     src: "assets/memory-3.png",
     caption: "Growing up changed a lot of things. Our bond wasn't one of them. 🫂"
