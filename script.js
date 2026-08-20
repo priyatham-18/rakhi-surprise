@@ -8,11 +8,18 @@ function show(id) {
 
 function startMusic() {
   if (!song) return;
+
   song.volume = 0.55;
+
   song.play().then(() => {
     if (musicPill) musicPill.classList.add("show");
   }).catch(() => {});
 }
+
+
+// =====================================
+// ENTER OUR STORY
+// =====================================
 
 const enterBtn = document.getElementById("enterBtn");
 
@@ -22,6 +29,11 @@ if (enterBtn) {
     show("memories");
   };
 }
+
+
+// =====================================
+// MEMORY DATA
+// =====================================
 
 const photos = [
   {
@@ -63,92 +75,318 @@ const photos = [
 ];
 
 let index = 0;
+let startX = 0;
+let currentX = 0;
+let dragging = false;
 
+const card = document.getElementById("photoCard");
 const img = document.getElementById("memoryImage");
 const caption = document.getElementById("caption");
 const number = document.getElementById("photoNumber");
-const dots = document.getElementById("dots");
 
-function setPhoto(i) {
+
+// =====================================
+// LOAD PHOTO
+// =====================================
+
+function loadPhoto(i) {
   index = (i + photos.length) % photos.length;
 
-  const card = document.getElementById("photoCard");
+  img.src = photos[index].src;
+  caption.textContent = photos[index].caption;
+  number.textContent =
+    `${String(index + 1).padStart(2, "0")} / ${String(photos.length).padStart(2, "0")}`;
 
-  if (card) {
-    card.style.opacity = "0";
-    card.style.transform =
-      `translateX(${index % 2 ? -25 : 25}px) rotate(${index % 2 ? -2 : 2}deg)`;
-  }
+  // Preload next + previous
+  const next = new Image();
+  next.src = photos[(index + 1) % photos.length].src;
+
+  const prev = new Image();
+  prev.src = photos[(index - 1 + photos.length) % photos.length].src;
+}
+
+
+// =====================================
+// SWIPE ANIMATION
+// =====================================
+
+function swipe(direction) {
+
+  if (!card) return;
+
+  const distance =
+    direction === "left"
+      ? "-120%"
+      : "120%";
+
+  card.style.transition =
+    "transform .45s cubic-bezier(.2,.8,.2,1), opacity .45s";
+
+  card.style.transform =
+    `translateX(${distance}) rotate(${direction === "left" ? -12 : 12}deg)`;
+
+  card.style.opacity = "0";
 
   setTimeout(() => {
-    if (img) img.src = photos[index].src;
-    if (caption) caption.textContent = photos[index].caption;
-    if (number) number.textContent = String(index + 1).padStart(2, "0");
 
-    if (dots) {
-      [...dots.children].forEach((d, j) => {
-        d.classList.toggle("on", j === index);
-      });
-    }
+    if (index === photos.length - 1 && direction === "left") {
 
-    if (card) {
+      show("letter");
+
+      card.style.transform = "translateX(0)";
       card.style.opacity = "1";
-      card.style.transform =
-        `translateX(0) rotate(${index % 2 ? -2 : 2}deg)`;
+
+      return;
     }
-  }, 250);
+
+    index =
+      direction === "left"
+        ? index + 1
+        : index - 1;
+
+    loadPhoto(index);
+
+    card.style.transition = "none";
+    card.style.transform =
+      `translateX(${direction === "left" ? "100%" : "-100%"}) rotate(${direction === "left" ? 12 : -12}deg)`;
+
+    requestAnimationFrame(() => {
+
+      card.style.transition =
+        "transform .5s cubic-bezier(.2,.8,.2,1), opacity .5s";
+
+      card.style.transform =
+        "translateX(0) rotate(2deg)";
+
+      card.style.opacity = "1";
+
+    });
+
+  }, 450);
 }
 
-if (dots) {
-  photos.forEach((_, i) => {
-    const d = document.createElement("span");
-    d.className = "dot" + (i === 0 ? " on" : "");
-    d.onclick = () => setPhoto(i);
-    dots.appendChild(d);
+
+// =====================================
+// TOUCH / SWIPE
+// =====================================
+
+if (card) {
+
+  card.addEventListener("touchstart", e => {
+
+    startX = e.touches[0].clientX;
+    currentX = startX;
+    dragging = true;
+
+    card.style.transition = "none";
+
+  }, { passive: true });
+
+
+  card.addEventListener("touchmove", e => {
+
+    if (!dragging) return;
+
+    currentX = e.touches[0].clientX;
+
+    const movement = currentX - startX;
+
+    card.style.transform =
+      `translateX(${movement}px) rotate(${movement * 0.04}deg)`;
+
+  }, { passive: true });
+
+
+  card.addEventListener("touchend", () => {
+
+    if (!dragging) return;
+
+    dragging = false;
+
+    const movement = currentX - startX;
+
+    if (Math.abs(movement) > 80) {
+
+      if (movement < 0) {
+        swipe("left");
+      } else {
+        swipe("right");
+      }
+
+    } else {
+
+      card.style.transition =
+        "transform .35s cubic-bezier(.2,.8,.2,1)";
+
+      card.style.transform =
+        "translateX(0) rotate(2deg)";
+    }
+
   });
+
 }
 
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
 
-if (prevBtn) prevBtn.onclick = () => setPhoto(index - 1);
-if (nextBtn) nextBtn.onclick = () => setPhoto(index + 1);
+// =====================================
+// MOUSE DRAG FOR DESKTOP
+// =====================================
 
-const continueBtn = document.getElementById("continueBtn");
+if (card) {
+
+  card.addEventListener("mousedown", e => {
+
+    startX = e.clientX;
+    currentX = startX;
+    dragging = true;
+
+    card.style.transition = "none";
+
+  });
+
+
+  window.addEventListener("mousemove", e => {
+
+    if (!dragging) return;
+
+    currentX = e.clientX;
+
+    const movement = currentX - startX;
+
+    card.style.transform =
+      `translateX(${movement}px) rotate(${movement * 0.04}deg)`;
+
+  });
+
+
+  window.addEventListener("mouseup", () => {
+
+    if (!dragging) return;
+
+    dragging = false;
+
+    const movement = currentX - startX;
+
+    if (Math.abs(movement) > 100) {
+
+      if (movement < 0) {
+        swipe("left");
+      } else {
+        swipe("right");
+      }
+
+    } else {
+
+      card.style.transition =
+        "transform .35s cubic-bezier(.2,.8,.2,1)";
+
+      card.style.transform =
+        "translateX(0) rotate(2deg)";
+    }
+
+  });
+
+}
+
+
+// =====================================
+// KEYBOARD
+// =====================================
+
+document.addEventListener("keydown", e => {
+
+  if (e.key === "ArrowLeft") {
+    swipe("right");
+  }
+
+  if (e.key === "ArrowRight") {
+    swipe("left");
+  }
+
+});
+
+
+// =====================================
+// CONTINUE
+// =====================================
+
+const continueBtn =
+  document.getElementById("continueBtn");
 
 if (continueBtn) {
   continueBtn.onclick = () => show("letter");
 }
 
-const revealBtn = document.getElementById("revealBtn");
+
+// =====================================
+// FINAL REVEAL
+// =====================================
+
+const revealBtn =
+  document.getElementById("revealBtn");
 
 if (revealBtn) {
+
   revealBtn.onclick = () => {
+
     show("finale");
+
     burst();
+
   };
+
 }
 
-const musicBtn = document.getElementById("musicBtn");
+
+// =====================================
+// MUSIC
+// =====================================
+
+const musicBtn =
+  document.getElementById("musicBtn");
 
 if (musicBtn) {
+
   musicBtn.onclick = () => {
+
     if (!song) return;
 
     if (song.paused) {
+
       song.play();
-      musicBtn.innerHTML = "♫ <span>Music on</span>";
+
+      musicBtn.innerHTML =
+        "♫ <span>Music on</span>";
+
     } else {
+
       song.pause();
-      musicBtn.innerHTML = "♫ <span>Music off</span>";
+
+      musicBtn.innerHTML =
+        "♫ <span>Music off</span>";
     }
+
   };
+
 }
 
+
+// =====================================
+// CONFETTI
+// =====================================
+
 function burst() {
-  const symbols = ["❤️", "💖", "💕", "✨", "🎀", "✦"];
+
+  const symbols = [
+    "❤️",
+    "💖",
+    "💕",
+    "✨",
+    "🎀",
+    "✦"
+  ];
 
   for (let i = 0; i < 80; i++) {
+
     const e = document.createElement("div");
 
     e.textContent =
@@ -157,38 +395,68 @@ function burst() {
     e.style.position = "fixed";
     e.style.left = Math.random() * 100 + "vw";
     e.style.bottom = "-30px";
-    e.style.fontSize = 12 + Math.random() * 24 + "px";
+    e.style.fontSize =
+      12 + Math.random() * 24 + "px";
+
     e.style.zIndex = "25";
     e.style.pointerEvents = "none";
+
     e.style.transition =
-      "transform 5s linear,opacity 5s linear";
+      "transform 5s linear, opacity 5s linear";
 
     document.body.appendChild(e);
 
     requestAnimationFrame(() => {
+
       e.style.transform =
         `translateY(-110vh) rotate(${Math.random() * 500}deg)`;
+
       e.style.opacity = "0";
+
     });
 
     setTimeout(() => e.remove(), 5200);
+
   }
+
 }
 
-const pc = document.getElementById("particles");
+
+// =====================================
+// PARTICLES
+// =====================================
+
+const pc =
+  document.getElementById("particles");
 
 if (pc) {
+
   for (let i = 0; i < 35; i++) {
+
     const p = document.createElement("span");
+
     p.className = "p";
 
     const s = 1 + Math.random() * 3;
 
-    p.style.width = p.style.height = s + "px";
-    p.style.left = Math.random() * 100 + "%";
-    p.style.animationDuration = 8 + Math.random() * 12 + "s";
-    p.style.animationDelay = -Math.random() * 12 + "s";
+    p.style.width = s + "px";
+    p.style.height = s + "px";
+
+    p.style.left =
+      Math.random() * 100 + "%";
+
+    p.style.animationDuration =
+      8 + Math.random() * 12 + "s";
+
+    p.style.animationDelay =
+      -Math.random() * 12 + "s";
 
     pc.appendChild(p);
+
   }
+
 }
+
+
+// Load first photo
+loadPhoto(0);
