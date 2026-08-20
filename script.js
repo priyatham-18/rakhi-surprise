@@ -57,11 +57,7 @@ const photos = [
   }
 ];
 
-  {
-    src: "assets/memory-3.png",
-    caption: "Growing up changed a lot of things. Our bond wasn't one of them. 🫂"
-  }
-];
+let index = 0;
 let index=0;
 const img=document.getElementById("memoryImage");
 const caption=document.getElementById("caption");
